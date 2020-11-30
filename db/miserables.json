@@ -1,0 +1,196 @@
+{
+    "nodes": [
+      {
+        "id": "Nghiax\n142205",
+        "name": "Nghiax",
+        "group": 1
+      },
+      {
+        "id": "Co\n142188",
+        "name": "Co",
+        "group": 2
+      },
+      {
+        "id": "Trang\n142168",
+        "name": "Trang",
+        "group": 3
+      },
+      {
+        "id": "Thang\n142171",
+        "name": "Thang",
+        "group": 3
+      },
+      {
+        "id": "Cuong\n142173",
+        "name": "Cuong",
+        "group": 3
+      },
+      {
+        "id": "Nga\n142186",
+        "name": "Nga",
+        "group": 5
+      },
+      {
+        "id": "Long\n142169",
+        "name": "Long",
+        "group": 2
+      },
+      {
+        "id": "Tri\n142179",
+        "name": "Tri",
+        "group": 2
+      },
+      {
+        "id": "Hung\n142198",
+        "name": "Hung",
+        "group": 5
+      },
+      {
+        "id": "Anh Ruy\n16901",
+        "name": "Anh Ruy",
+        "group": 2
+      },
+      {
+        "id": "Anh Hieu\n1125",
+        "name": "Anh Hieu",
+        "group": 4
+      },
+      {
+        "id": "Anh Tin\n3306",
+        "name": "Anh Tin",
+        "group": 2
+      },
+      {
+        "id": "Chi Xuyen\n16058",
+        "name": "Chi Xuyen",
+        "group": 4
+      },
+      {
+        "id": "Chi Quyen\n17113",
+        "name": "Chi Quyen",
+        "group": 5
+      },
+      {
+        "id": "Chi Thuy\n2061",
+        "name": "Chi Thuy",
+        "group": 2
+      },
+      {
+        "id": "Anh Hoan\n11653",
+        "name": "Anh Hoan",
+        "group": 6
+      },
+      {
+        "id": "Anh Ky Ky\n70445",
+        "name": "Anh Ky Ky",
+        "group": 2
+      }
+    ],
+    "links": [
+      {
+        "source": "Nghiax\n142205",
+        "target": "Anh Tin\n3306",
+        "value": 5
+      },
+      {
+        "source": "Anh Tin\n3306",
+        "target": "Anh Ruy\n16901",
+        "value": 5
+      },
+      {
+        "source": "Anh Ruy\n16901",
+        "target": "Tri\n142179",
+        "value": 5
+      },
+      {
+        "source": "Tri\n142179",
+        "target": "Long\n142169",
+        "value": 5
+      },
+      {
+        "source": "Long\n142169",
+        "target": "Co\n142188",
+        "value": 5
+      },
+      {
+        "source": "Co\n142188",
+        "target": "Chi Thuy\n2061",
+        "value": 5
+      },
+      {
+        "source": "Chi Thuy\n2061",
+        "target": "Anh Ky Ky\n70445",
+        "value": 5
+      },
+      {
+        "source": "Anh Ky Ky\n70445",
+        "target": "Nghiax\n142205",
+        "value": 30
+      },
+      {
+        "source": "Nghiax\n142205",
+        "target": "Thang\n142171",
+        "value": 10
+      },
+      {
+        "source": "Thang\n142171",
+        "target": "Trang\n142168",
+        "value": 5
+      },
+      {
+        "source": "Trang\n142168",
+        "target": "Cuong\n142173",
+        "value": 10
+      },
+      {
+        "source": "Cuong\n142173",
+        "target": "Nghiax\n142205",
+        "value": 17
+      },
+      {
+        "source": "Nghiax\n142205",
+        "target": "Anh Hieu\n1125",
+        "value": 10
+      },
+      {
+        "source": "Anh Hieu\n1125",
+        "target": "Chi Xuyen\n16058",
+        "value": 7.000000000000001
+      },
+      {
+        "source": "Chi Xuyen\n16058",
+        "target": "Nghiax\n142205",
+        "value": 21
+      },
+      {
+        "source": "Nghiax\n142205",
+        "target": "Chi Quyen\n17113",
+        "value": 14.000000000000002
+      },
+      {
+        "source": "Chi Quyen\n17113",
+        "target": "Nga\n142186",
+        "value": 5
+      },
+      {
+        "source": "Nga\n142186",
+        "target": "Hung\n142198",
+        "value": 11
+      },
+      {
+        "source": "Hung\n142198",
+        "target": "Nghiax\n142205",
+        "value": 24
+      },
+      {
+        "source": "Nghiax\n142205",
+        "target": "Anh Hoan\n11653",
+        "value": 14.000000000000002
+      },
+      {
+        "source": "Anh Hoan\n11653",
+        "target": "Nghiax\n142205",
+        "value": 14.000000000000002
+      }
+    ]
+  }
