@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 
 let indexRouter = require("./routes/index");
 let dataRoutes = require("./routes/createData");
