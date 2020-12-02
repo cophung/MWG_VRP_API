@@ -144,4 +144,18 @@ module.exports = {
     find();
     return getRoutes();
   },
+
+  handleLocations: (routes, db) => {
+    let routesLocations = routes.map((route, index) => {
+      let temptLocations = route.map((e) => {
+        return {
+          long: db[e].order.long,
+          lat: db[e].order.lat,
+        };
+      });
+
+      return temptLocations;
+    });
+    return routesLocations;
+  },
 };

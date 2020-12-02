@@ -8,4 +8,11 @@ module.exports = {
       routes,
     });
   },
+  getLocations: function (req, res) {
+    const locations = models.handleLocations();
+    res.status(200).send({
+      success: "true",
+      locations,
+    });
+  },
 };
