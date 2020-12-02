@@ -21,11 +21,12 @@
       0.14,
       0.3
     ],
+    "place": "Coop quận 9",
     "order": {
       "weight": 0,
       "long": 106.775174,
       "lat": 10.847981,
-      "serviceTime": 1,
+      "serviceTime": 0,
       "timeWindow": [8, 23]
     }
   },
@@ -51,10 +52,11 @@
       0.32,
       0.17
     ],
+    "place": "Coop-Food Tam Hà",
     "order": {
       "weight": 7,
-      "long": 106.77441,
-      "lat": 10.841086,
+      "long": 106.7471418,
+      "lat": 10.8613802,
       "serviceTime": 0.7,
       "timeWindow": [8, 13]
     }
@@ -81,10 +83,11 @@
       0.21,
       0.05
     ],
+    "place": "KTX Khu B",
     "order": {
       "weight": 3,
-      "long": 106.773538,
-      "lat": 10.844492,
+      "long": 106.7817025,
+      "lat": 10.8830014,
       "serviceTime": 0.2,
       "timeWindow": [9, 11]
     }
@@ -111,10 +114,11 @@
       0.11,
       0.24
     ],
+    "place": "Cafe Sân Chim",
     "order": {
-      "weight": 10,
-      "long": 106.763187,
-      "lat": 10.852758,
+      "weight": 3,
+      "long": 106.7808504,
+      "lat": 10.86086,
       "serviceTime": 3,
       "timeWindow": [12, 15]
     }
@@ -141,10 +145,11 @@
       0.07,
       0.1
     ],
+    "place": "Cửa hàng hoa Phúc Lan Phương",
     "order": {
       "weight": 4,
-      "long": 106.768171,
-      "lat": 10.85033,
+      "long": 106.8096988,
+      "lat": 10.849055,
       "serviceTime": 1.5,
       "timeWindow": [18, 20]
     }
@@ -171,10 +176,11 @@
       0.14,
       0.17
     ],
+    "place": "Bưu điện Bình An - Dĩ An",
     "order": {
       "weight": 8,
-      "long": 106.770891,
-      "lat": 10.849677,
+      "long": 106.7919002,
+      "lat": 10.8968842,
       "serviceTime": 2,
       "timeWindow": [11, 14]
     }
@@ -201,10 +207,10 @@
       0.1,
       0.17
     ],
+    "place": "Quán Gà Rán 104 Tam Hà",
     "order": {
-      "weight": 6,
-      "long": 106.776231,
-      "lat": 10.874757,
+      "long": 106.7466432,
+      "lat": 10.8628654,
       "serviceTime": 1.2,
       "timeWindow": [10, 12]
     }
@@ -231,10 +237,11 @@
       0.17,
       0.14
     ],
+    "place": "Trường mầm non Sơn Ca",
     "order": {
       "weight": 5,
-      "long": 106.778244,
-      "lat": 10.870165,
+      "long": 106.8151297,
+      "lat": 10.8486701,
       "serviceTime": 0.5,
       "timeWindow": [14, 18]
     }
@@ -261,10 +268,11 @@
       0.24,
       0.14
     ],
+    "place": "Trường Cao Đẳng Sư Phạm Trung Ương Tp Hcm",
     "order": {
       "weight": 1,
-      "long": 106.761178,
-      "lat": 10.858531,
+      "long": 106.7824705,
+      "lat": 10.8054577,
       "serviceTime": 0.8,
       "timeWindow": [16, 17]
     }
@@ -291,10 +299,11 @@
       0.3,
       0.21
     ],
+    "place": "Y-26 Coffee",
     "order": {
       "weight": 2,
-      "long": 106.763545,
-      "lat": 10.856093,
+      "long": 106.7283992,
+      "lat": 10.8452113,
       "serviceTime": 1.3,
       "timeWindow": [18.5, 21]
     }
@@ -321,10 +330,11 @@
       0.26,
       0.17
     ],
+    "place": "Bệnh Viện quận 9",
     "order": {
       "weight": 9,
-      "long": 106.761683,
-      "lat": 10.86049,
+      "long": 106.790147,
+      "lat": 10.8449235,
       "serviceTime": 2.3,
       "timeWindow": [19, 22]
     }
@@ -351,10 +361,11 @@
       0.36,
       0.26
     ],
+    "place": "Vincom Thủ Đức",
     "order": {
       "weight": 3,
-      "long": 106.762352,
-      "lat": 10.862985,
+      "long": 106.7651,
+      "lat": 10.8501,
       "serviceTime": 0.1,
       "timeWindow": [8, 9]
     }
@@ -381,10 +392,11 @@
       0.26,
       0.44
     ],
+    "place": "Hương Sen Quán",
     "order": {
       "weight": 8,
-      "long": 106.772033,
-      "lat": 10.860827,
+      "long": 106.7379834,
+      "lat": 10.8560058,
       "serviceTime": 1.1,
       "timeWindow": [9, 15]
     }
@@ -411,10 +423,11 @@
       0.17,
       0.1
     ],
+    "place": "Phúc Long Kha Vạn Cân",
     "order": {
       "weight": 6,
-      "long": 106.772033,
-      "lat": 10.860827,
+      "long": 106.7559488,
+      "lat": 10.8554006,
       "serviceTime": 1.7,
       "timeWindow": [14, 16]
     }
@@ -441,10 +454,11 @@
       0.24,
       0.05
     ],
+    "place": "Steel Box Coffee",
     "order": {
       "weight": 2,
-      "long": 106.773386,
-      "lat": 10.860449,
+      "long": 106.8030792,
+      "lat": 10.8013081,
       "serviceTime": 0.2,
       "timeWindow": [8, 16]
     }
@@ -471,10 +485,11 @@
       0,
       0.3
     ],
+    "place": "Chợ Đêm Man Thiện",
     "order": {
       "weight": 7,
-      "long": 106.781517,
-      "lat": 10.850289,
+      "long": 106.7953719,
+      "lat": 10.8500524,
       "serviceTime": 1,
       "timeWindow": [16, 21]
     }
@@ -501,10 +516,11 @@
       0.3,
       0
     ],
+    "place": "Trung tâm Giáo dục Quốc Phòng",
     "order": {
       "weight": 4,
-      "long": 106.813917,
-      "lat": 10.848794,
+      "long": 106.8016819,
+      "lat": 10.8898564,
       "serviceTime": 0.5,
       "timeWindow": [10, 20]
     }

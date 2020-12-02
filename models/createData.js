@@ -83,18 +83,22 @@ const createData = (path) => {
   const timeTravels = createTimeTravel(distances);
 
   const result = sampleData.map((currentValue, index) => {
-    const order = currentValue.order;
+    let order = currentValue.order;
+
+    if (index !== 0) {
+      order = {
+        ...order,
+        weight: getRandomInt(5, 15),
+        serviceTime: getRandomFloat(0, 4),
+        timeWindow: createTimeWindow(),
+      };
+    }
 
     const newCurrentValue = {
       ...currentValue,
       distances: distances[index],
       timeTravels: timeTravels[index],
-      order: {
-        ...order,
-        weight: getRandomInt(5, 15),
-        serviceTime: getRandomFloat(0, 4),
-        timeWindow: createTimeWindow(),
-      },
+      order: { ...order },
     };
 
     return newCurrentValue;
