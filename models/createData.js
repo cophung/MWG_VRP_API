@@ -3,10 +3,10 @@ const fs = require("fs");
 const getRandomInt = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-const getRandomFloat = (min, max) => {
+const getRandomArbitrary = (min, max) => {
   let temptNumber = Math.random() * (max - min) + min;
   let numberRandom = Math.round(temptNumber * 100) / 100;
 
@@ -60,9 +60,13 @@ const createTimeTravel = (arr) => {
 };
 
 const createTimeWindow = () => {
-  let startTime = getRandomFloat(8, 23);
-  let endTime = getRandomFloat(startTime + 2, 23);
-  let timeWindow = [startTime, endTime];
+  let startTime = getRandomArbitrary(8, 17);
+  let endTime = getRandomArbitrary(startTime + 2, 22);
+
+  let timeWindow = [
+    parseFloat(startTime.toFixed(1)),
+    parseFloat(endTime.toFixed(1)),
+  ];
 
   return timeWindow;
 };
@@ -76,37 +80,43 @@ const readFileJson = (path) => {
   );
 };
 
-const createData = (path) => {
+const createData = (path, numberOfCustomers, isSetServiceTime) => {
   const sampleData = readFileJson(path);
-  const randomArray = createRandomArray(17);
+  const randomArray = createRandomArray(numberOfCustomers);
   const distances = createSymmetricArray(randomArray);
   const timeTravels = createTimeTravel(distances);
 
-  const result = sampleData.map((currentValue, index) => {
-    let order = currentValue.order;
+  const result = distances.map((currentValue, index) => {
+    const itemSampleData = sampleData[index];
+    const orderItemSampleData = itemSampleData.order;
 
     if (index !== 0) {
-      order = {
-        ...order,
-        weight: getRandomInt(5, 15),
-        serviceTime: getRandomFloat(0, 4),
-        timeWindow: createTimeWindow(),
+      return {
+        ...itemSampleData,
+        distances: currentValue,
+        timeTravels: timeTravels[index],
+        order: {
+          ...orderItemSampleData,
+          weight: getRandomInt(5, 15),
+          serviceTime: isSetServiceTime
+            ? parseFloat(getRandomArbitrary(0, 4).toFixed(1))
+            : 0,
+          timeWindow: createTimeWindow(),
+        },
+      };
+    } else {
+      return {
+        ...itemSampleData,
+        distances: currentValue,
+        timeTravels: timeTravels[index],
       };
     }
-
-    const newCurrentValue = {
-      ...currentValue,
-      distances: distances[index],
-      timeTravels: timeTravels[index],
-      order: { ...order },
-    };
-
-    return newCurrentValue;
   });
 
   return result;
 };
 
 module.exports = {
-  createData: () => createData("./db/db.json"),
+  mixVehicles: () => createData("./db/db.json", 16, true),
+  motor: () => createData("./db/db.json", 10, false),
 };

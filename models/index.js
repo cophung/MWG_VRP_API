@@ -4,7 +4,7 @@ const util = require("../util/util");
 const ids = util.readFileJson("./db/id.json");
 const db = util.readFileJson("./db/db.json");
 
-const cars = { capacity: 20 };
+const cars = { capacity: 15 };
 
 module.exports = {
   handleRoutes: () => vrp.handleVrp(ids, db, 7, cars),

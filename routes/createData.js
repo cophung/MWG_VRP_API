@@ -1,9 +1,10 @@
 const express = require("express");
 
-const { createData } = require("../controllers/createData");
+const { mixVehicles, motor } = require("../controllers/createData");
 
 const router = express.Router();
 
-router.get("/", createData);
+router.get("/vehicles", mixVehicles);
+router.get("/motor", motor);
 
 module.exports = router;
