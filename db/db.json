@@ -209,6 +209,7 @@
     ],
     "place": "Quán Gà Rán 104 Tam Hà",
     "order": {
+      "weight": 10,
       "long": 106.7466432,
       "lat": 10.8628654,
       "serviceTime": 1.2,
