@@ -15,4 +15,18 @@ module.exports = {
       locations,
     });
   },
+  getOrders: function (req, res) {
+    const orders = models.handleOrders();
+    res.status(200).send({
+      success: "true",
+      orders,
+    });
+  },
+  getCustomers: function (req, res) {
+    const customers = models.handleCustomers();
+    res.status(200).send({
+      success: "true",
+      customers,
+    });
+  },
 };

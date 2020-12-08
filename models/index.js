@@ -12,4 +12,6 @@ module.exports = {
     const routes = vrp.handleVrp(ids, db, 7, cars);
     return vrp.handleLocations(routes, db);
   },
+  handleOrders: () => db,
+  handleCustomers: () => ids,
 };
