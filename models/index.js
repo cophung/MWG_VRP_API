@@ -7,9 +7,14 @@ const db = util.readFileJson("./db/db.json");
 const cars = { capacity: 15 };
 
 module.exports = {
-  handleRoutes: () => vrp.handleVrp(ids, db, 7, cars),
+  handleIndexRoutes: () => vrp.handleIndexRoutes(ids, db, 7, cars),
+  handleRoutes: () => {
+    const indexRoutes = vrp.handleIndexRoutes(ids, db, 7, cars);
+    const routes = vrp.handleRoutes(indexRoutes, ids, db);
+    return routes;
+  },
   handleLocations: () => {
-    const routes = vrp.handleVrp(ids, db, 7, cars);
+    const routes = vrp.handleIndexRoutes(ids, db, 7, cars);
     return vrp.handleLocations(routes, db);
   },
   handleOrders: () => db,

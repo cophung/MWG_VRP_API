@@ -1,5 +1,7 @@
+const _ = require("lodash");
+
 module.exports = {
-  handleVrp: function (ids, db, startTime, cars, bikes) {
+  handleIndexRoutes: function (ids, db, startTime, cars, bikes) {
     let routes = [];
 
     const createNewRoute = function () {
@@ -143,6 +145,24 @@ module.exports = {
 
     find();
     return getRoutes();
+  },
+
+  handleRoutes: (indexRoutes, customers, orders) => {
+    let routes = indexRoutes.map((subIndexRoutes) => {
+      let detailRoute = subIndexRoutes.map((index) => {
+        const order = orders[index];
+        const cloneOrder = _.cloneDeep(
+          _.omit(order, ["distances", "timeTravels"])
+        );
+        cloneOrder.name = customers[index].name;
+
+        return cloneOrder;
+      });
+
+      return detailRoute;
+    });
+
+    return routes;
   },
 
   handleLocations: (routes, db) => {

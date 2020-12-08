@@ -1,6 +1,13 @@
 const models = require("../models/index");
 
 module.exports = {
+  getIndexRoutes: function (req, res) {
+    const routes = models.handleIndexRoutes();
+    res.status(200).send({
+      success: "true",
+      routes,
+    });
+  },
   getRoutes: function (req, res) {
     const routes = models.handleRoutes();
     res.status(200).send({
