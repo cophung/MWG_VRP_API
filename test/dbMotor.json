@@ -1,0 +1,132 @@
+[
+  {
+    "id": 142205,
+    "distances": [0, 6, 6, 10, 2, 5, 6, 8, 7, 9],
+    "timeTravels": [0, 0.2, 0.19, 0.33, 0.06, 0.16, 0.2, 0.26, 0.23, 0.29],
+    "place": "Coop quận 9",
+    "order": {
+      "weight": 0,
+      "long": 106.775174,
+      "lat": 10.847981,
+      "serviceTime": 0,
+      "timeWindow": [8, 23]
+    }
+  },
+  {
+    "id": 142188,
+    "distances": [6, 0, 1, 8, 5, 6, 5, 1, 10, 7],
+    "timeTravels": [0.2, 0, 0.03, 0.26, 0.17, 0.19, 0.16, 0.03, 0.33, 0.23],
+    "place": "Coop-Food Tam Hà",
+    "order": {
+      "weight": 12,
+      "long": 106.7471418,
+      "lat": 10.8613802,
+      "serviceTime": 0,
+      "timeWindow": [15.5, 20.5]
+    }
+  },
+  {
+    "id": 142168,
+    "distances": [6, 1, 0, 4, 10, 9, 3, 9, 10, 6],
+    "timeTravels": [0.19, 0.03, 0, 0.13, 0.33, 0.3, 0.1, 0.3, 0.32, 0.2],
+    "place": "KTX Khu B",
+    "order": {
+      "weight": 10,
+      "long": 106.7817025,
+      "lat": 10.8830014,
+      "serviceTime": 0,
+      "timeWindow": [16.5, 21.5]
+    }
+  },
+  {
+    "id": 142171,
+    "distances": [10, 8, 4, 0, 1, 6, 8, 4, 3, 9],
+    "timeTravels": [0.33, 0.26, 0.13, 0, 0.03, 0.2, 0.26, 0.13, 0.1, 0.29],
+    "place": "Cafe Sân Chim",
+    "order": {
+      "weight": 14,
+      "long": 106.7808504,
+      "lat": 10.86086,
+      "serviceTime": 0,
+      "timeWindow": [16.5, 19.5]
+    }
+  },
+  {
+    "id": 142173,
+    "distances": [2, 5, 10, 1, 0, 6, 7, 5, 5, 5],
+    "timeTravels": [0.06, 0.17, 0.33, 0.03, 0, 0.2, 0.23, 0.16, 0.16, 0.16],
+    "place": "Cửa hàng hoa Phúc Lan Phương",
+    "order": {
+      "weight": 5,
+      "long": 106.8096988,
+      "lat": 10.849055,
+      "serviceTime": 0,
+      "timeWindow": [9.5, 18]
+    }
+  },
+  {
+    "id": 142186,
+    "distances": [5, 6, 9, 6, 6, 0, 6, 9, 10, 2],
+    "timeTravels": [0.16, 0.19, 0.3, 0.2, 0.2, 0, 0.2, 0.29, 0.33, 0.07],
+    "place": "Bưu điện Bình An - Dĩ An",
+    "order": {
+      "weight": 9,
+      "long": 106.7919002,
+      "lat": 10.8968842,
+      "serviceTime": 0,
+      "timeWindow": [15, 21]
+    }
+  },
+  {
+    "id": 142169,
+    "distances": [6, 5, 3, 8, 7, 6, 0, 3, 6, 5],
+    "timeTravels": [0.2, 0.16, 0.1, 0.26, 0.23, 0.2, 0, 0.1, 0.2, 0.17],
+    "place": "Quán Gà Rán 104 Tam Hà",
+    "order": {
+      "weight": 7,
+      "long": 106.7466432,
+      "lat": 10.8628654,
+      "serviceTime": 0,
+      "timeWindow": [16.5, 20.5]
+    }
+  },
+  {
+    "id": 142179,
+    "distances": [8, 1, 9, 4, 5, 9, 3, 0, 4, 8],
+    "timeTravels": [0.26, 0.03, 0.3, 0.13, 0.16, 0.29, 0.1, 0, 0.13, 0.26],
+    "place": "Trường mầm non Sơn Ca",
+    "order": {
+      "weight": 14,
+      "long": 106.8151297,
+      "lat": 10.8486701,
+      "serviceTime": 0,
+      "timeWindow": [15, 19.5]
+    }
+  },
+  {
+    "id": 142198,
+    "distances": [7, 10, 10, 3, 5, 10, 6, 4, 0, 3],
+    "timeTravels": [0.23, 0.33, 0.32, 0.1, 0.16, 0.33, 0.2, 0.13, 0, 0.1],
+    "place": "Trường Cao Đẳng Sư Phạm Trung Ương Tp Hcm",
+    "order": {
+      "weight": 9,
+      "long": 106.7824705,
+      "lat": 10.8054577,
+      "serviceTime": 0,
+      "timeWindow": [9.5, 14.5]
+    }
+  },
+  {
+    "id": 16901,
+    "distances": [9, 7, 6, 9, 5, 2, 5, 8, 3, 0],
+    "timeTravels": [0.29, 0.23, 0.2, 0.29, 0.16, 0.07, 0.17, 0.26, 0.1, 0],
+    "place": "Y-26 Coffee",
+    "order": {
+      "weight": 15,
+      "long": 106.7283992,
+      "lat": 10.8452113,
+      "serviceTime": 0,
+      "timeWindow": [9, 17]
+    }
+  }
+]

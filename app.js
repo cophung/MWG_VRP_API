@@ -10,7 +10,7 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 
 app.use("/api", index);
-app.use("/createData", dataRoutes);
+app.use("/create", dataRoutes);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

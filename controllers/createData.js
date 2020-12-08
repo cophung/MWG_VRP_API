@@ -1,15 +1,22 @@
 const models = require("../models/createData");
 
 module.exports = {
-  mixVehicles: function (req, res) {
-    const data = models.mixVehicles();
+  randomVehicles: function (req, res) {
+    const data = models.randomVehicles();
     res.status(200).send({
       success: "true",
       data,
     });
   },
-  motor: (req, res) => {
-    const data = models.motor();
+  randomMotor: (req, res) => {
+    const data = models.randomMotor();
+    res.status(200).send({
+      success: "true",
+      data,
+    });
+  },
+  constantMotor: (req, res) => {
+    const data = models.constantMotor();
     res.status(200).send({
       success: "true",
       data,

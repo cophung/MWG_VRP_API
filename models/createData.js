@@ -1,5 +1,7 @@
 const fs = require("fs");
 
+const { readFileJson } = require("../util/util");
+
 const getRandomInt = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -71,15 +73,6 @@ const createTimeWindow = () => {
   return timeWindow;
 };
 
-const readFileJson = (path) => {
-  return JSON.parse(
-    fs.readFileSync(path, {
-      encoding: "utf8",
-      flag: "r",
-    })
-  );
-};
-
 const createData = (path, numberOfCustomers, isSetServiceTime) => {
   const sampleData = readFileJson(path);
   const randomArray = createRandomArray(numberOfCustomers);
@@ -117,6 +110,7 @@ const createData = (path, numberOfCustomers, isSetServiceTime) => {
 };
 
 module.exports = {
-  mixVehicles: () => createData("./db/db.json", 16, true),
-  motor: () => createData("./db/db.json", 10, false),
+  randomVehicles: () => createData("./db/db.json", 16, true),
+  randomMotor: () => createData("./db/db.json", 10, false),
+  constantMotor: () => readFileJson("./test/dbMotor.json"),
 };
