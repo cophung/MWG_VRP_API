@@ -36,4 +36,12 @@ module.exports = {
       customers,
     });
   },
+  // danh sach order ban dau
+  getDetailOrders: function (req, res) {
+    const orders = models.handleDetailOrders();
+    res.status(200).send({
+      success: "true",
+      orders,
+    });
+  },
 };

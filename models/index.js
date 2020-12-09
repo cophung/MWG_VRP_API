@@ -19,4 +19,5 @@ module.exports = {
   },
   handleOrders: () => db,
   handleCustomers: () => ids,
+  handleDetailOrders: () => vrp.handleDetailOrders(db, ids),
 };

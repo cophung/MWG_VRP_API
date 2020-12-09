@@ -178,4 +178,17 @@ module.exports = {
     });
     return routesLocations;
   },
+
+  //chi tiet don hang ban dau
+  handleDetailOrders: (orders, customers) => {
+    let cloneOrders = orders.map((order, index) => {
+      const cloneOrder = _.cloneDeep(
+        _.omit(order, ["distances", "timeTravels"])
+      );
+      cloneOrder.name = customers[index].name;
+      return cloneOrder;
+    });
+
+    return cloneOrders;
+  },
 };
