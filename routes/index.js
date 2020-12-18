@@ -6,6 +6,7 @@ const {
   getOrders,
   getCustomers,
   getDetailOrders,
+  getDriverWithOrders,
 } = require("../controllers/index");
 
 const router = express.Router();
@@ -16,5 +17,7 @@ router.get("/getLocations", getLocations);
 router.get("/getOrders", getOrders);
 router.get("/getCustomers", getCustomers);
 router.get("/getDetailOrders", getDetailOrders);
+
+router.get("/getDriverWithOrders", getDriverWithOrders);
 
 module.exports = router;

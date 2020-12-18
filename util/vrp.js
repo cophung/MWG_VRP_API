@@ -1,6 +1,14 @@
 const _ = require("lodash");
 
 module.exports = {
+  /**
+   *
+   * @param {array} ids thong tin khach hang
+   * @param {array} db thong tin danh sach order
+   * @param {number} startTime thoi gian bat dau hoat dong cua kho
+   * @param {object} cars { capacity } suc chua cua xe tai
+   * @param {*} bikes { capacity } suc chua cua xe motor
+   */
   handleIndexRoutes: function (ids, db, startTime, cars, bikes) {
     let routes = [];
 
@@ -179,6 +187,11 @@ module.exports = {
     return routesLocations;
   },
 
+  /**
+   *
+   * @param {*} orders
+   * @param {*} customers
+   */
   //chi tiet don hang ban dau
   handleDetailOrders: (orders, customers) => {
     let cloneOrders = orders.map((order, index) => {
@@ -190,5 +203,55 @@ module.exports = {
     });
 
     return cloneOrders;
+  },
+
+  /**
+   *
+   * @param {array} indexRoutes mang index tuyen duong
+   * @param {array} orders thong tin mang order ban dau
+   */
+  handleTimeTravels: (indexRoutes, orders) => {
+    let timeTravels = [];
+    indexRoutes.forEach((indexRoute) => {
+      let subTimeTravels = [];
+      for (let index = 0; index < indexRoute.length - 1; index++) {
+        subTimeTravels.push(orders[index].timeTravels[index + 1]);
+      }
+      timeTravels.push(subTimeTravels);
+    });
+    return timeTravels;
+  },
+
+  /**
+   *
+   * @param {array} routes  tuyen duong chi tiet
+   * @param {array} timeTravels chua danh sach mang time travel
+   * @param {array} drivers  danh sach thong tin tai xe
+   * @param {object} cars { capacity }
+   */
+  handleDriverWithOrder: (routes, timeTravels, drivers, cars) => {
+    const { capacity } = cars;
+    const routesWithDrivers = routes.map((route, index) => {
+      const { id, name } = drivers[index];
+      let weightOrders = 0;
+
+      route.forEach((subRoute) => {
+        const { weight } = subRoute.order;
+        weightOrders += weight;
+      });
+
+      return {
+        id,
+        name,
+        ngay: 0,
+        thang: 0,
+        capacity,
+        weightOrders,
+        timeTravels: timeTravels[index],
+        route,
+      };
+    });
+
+    return routesWithDrivers;
   },
 };

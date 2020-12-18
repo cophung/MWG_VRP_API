@@ -44,4 +44,13 @@ module.exports = {
       orders,
     });
   },
+
+  //danh sach tai xe voi don hang
+  getDriverWithOrders: function (req, res) {
+    const data = models.handleDriverWithOrders();
+    res.status(200).send({
+      success: "true",
+      data,
+    });
+  },
 };

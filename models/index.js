@@ -20,4 +20,14 @@ module.exports = {
   handleOrders: () => db,
   handleCustomers: () => ids,
   handleDetailOrders: () => vrp.handleDetailOrders(db, ids),
+  handleDriverWithOrders: () => {
+    const indexRoutes = vrp.handleIndexRoutes(ids, db, 7, cars);
+    const routes = vrp.handleRoutes(indexRoutes, ids, db);
+
+    const timeTravels = vrp.handleTimeTravels(indexRoutes, db);
+
+    const drivers = util.readFileJson("./db/drivers.json");
+
+    return vrp.handleDriverWithOrder(routes, timeTravels, drivers, cars);
+  },
 };
