@@ -56,8 +56,8 @@ module.exports = {
   },
 
   postSubOrders: (req, res) => {
-    const { data } = req.body;
-    const routes = models.handleSubOrdersRoutes(data);
+    const { body } = req;
+    const routes = models.handleSubOrdersRoutes(body);
     res.status(200).send({
       success: "true",
       routes,

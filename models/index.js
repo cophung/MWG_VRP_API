@@ -38,7 +38,8 @@ module.exports = {
   },
 
   handleSubOrdersRoutes: (orders) => {
-    const subOrdersData = vrpSubOrders.handleSubOrdersData(orders, db, ids);
+    const { data } = orders;
+    const subOrdersData = vrpSubOrders.handleSubOrdersData(data, db, ids);
     const indexSubOrdersData = vrpSubOrders.handlePrintIndexSubOrdersData(
       subOrdersData,
       ids
