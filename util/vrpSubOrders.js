@@ -22,25 +22,25 @@ module.exports = {
 
       return {
         id,
+        name,
         place,
         order: { weight, long, lat, serviceTime, timeWindow },
-        name,
       };
     });
 
     const cloneDepot = _.cloneDeep(dbOrders[0]);
-    const depot = _.omit(cloneDepot, ["timeTravels", "distances"]);
-    depot.name = idCustomers[0].name;
+    const { id, place, order } = cloneDepot;
+    const nameDepot = idCustomers[0].name;
 
-    return [depot, ...cloneOrders];
+    return [{ id, name: nameDepot, place, order }, ...cloneOrders];
   },
 
   /**
-   * in ra index cua orders
+   * in ra index cua orders so vs order tong
    * @param {array} orders data orders gui len tu FE
    * @param {*} customers data khach hang
    */
-  handlePrintIndexSubOrdersData: (orders, customers) => {
+  handleIndexSubOrdersVsTotalOrders: (orders, customers) => {
     const result = orders.map((item, index) => {
       const { id } = item;
       let indexCustomer;
@@ -57,7 +57,7 @@ module.exports = {
     return result;
   },
 
-  printTwoDimensionalArray: (ordersData, option) => {
+  handleTwoDimensionalArray: (ordersData, option) => {
     const result = ordersData.map((item) => {
       switch (option) {
         case "distances":
@@ -74,7 +74,7 @@ module.exports = {
     return result;
   },
 
-  printTwoDimensionalArrayFromSubOrders: (
+  handleTwoDimensionalArrayFromSubOrders: (
     indexSubOrderArray,
     twoDimensionalArray
   ) => {
@@ -90,7 +90,7 @@ module.exports = {
     return result;
   },
 
-  funcSubOrderRoutes: (
+  handleAssignTimeTravelsAndDistancesValueToSubOrdersData: (
     orders,
     timeTravelsTwoDimensionalArr,
     distancesTwoDimensionalArray

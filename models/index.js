@@ -1,82 +1,87 @@
-const vrp = require("../util/vrp");
-const vrpSubOrders = require("../util/vrpSubOrders");
-const util = require("../util/util");
+const { readFileJson } = require("../util/util");
 const {
-  printTwoDimensionalArray,
-  printTwoDimensionalArrayFromSubOrders,
-  funcSubOrderRoutes,
+  handleIndexRoutes,
+  handleRoutes,
+  handleLocations,
+  handleDetailOrders,
+  handleTimeTravels,
+  handleDriverWithOrder,
+} = require("../util/vrp");
+const {
+  handleSubOrdersData,
+  handleIndexSubOrdersVsTotalOrders,
+  handleTwoDimensionalArray,
+  handleTwoDimensionalArrayFromSubOrders,
+  handleAssignTimeTravelsAndDistancesValueToSubOrdersData,
 } = require("../util/vrpSubOrders");
 
-const ids = util.readFileJson("./db/id.json");
-const db = util.readFileJson("./db/db.json");
+const ids = readFileJson("./db/id.json");
+const db = readFileJson("./db/db.json");
 
 const cars = { capacity: 15 };
 
 module.exports = {
-  handleIndexRoutes: () => vrp.handleIndexRoutes(ids, db, 7, cars),
+  handleIndexRoutes: () => handleIndexRoutes(ids, db, 7, cars),
   handleRoutes: () => {
-    const indexRoutes = vrp.handleIndexRoutes(ids, db, 7, cars);
-    const routes = vrp.handleRoutes(indexRoutes, ids, db);
+    const indexRoutes = handleIndexRoutes(ids, db, 7, cars);
+    const routes = handleRoutes(indexRoutes, ids, db);
     return routes;
   },
   handleLocations: () => {
-    const routes = vrp.handleIndexRoutes(ids, db, 7, cars);
-    return vrp.handleLocations(routes, db);
+    const routes = handleIndexRoutes(ids, db, 7, cars);
+    return handleLocations(routes, db);
   },
   handleOrders: () => db,
   handleCustomers: () => ids,
-  handleDetailOrders: () => vrp.handleDetailOrders(db, ids),
+  handleDetailOrders: () => handleDetailOrders(db, ids),
   handleDriverWithOrders: () => {
-    const indexRoutes = vrp.handleIndexRoutes(ids, db, 7, cars);
-    const routes = vrp.handleRoutes(indexRoutes, ids, db);
+    const indexRoutes = handleIndexRoutes(ids, db, 7, cars);
+    const routes = handleRoutes(indexRoutes, ids, db);
+    const timeTravels = handleTimeTravels(indexRoutes, db);
+    const drivers = readFileJson("./db/drivers.json");
 
-    const timeTravels = vrp.handleTimeTravels(indexRoutes, db);
-
-    const drivers = util.readFileJson("./db/drivers.json");
-
-    return vrp.handleDriverWithOrder(routes, timeTravels, drivers, cars);
+    return handleDriverWithOrder(routes, timeTravels, drivers, cars);
   },
 
   handleSubOrdersRoutes: (orders) => {
     const { data } = orders;
-    const subOrdersData = vrpSubOrders.handleSubOrdersData(data, db, ids);
-    const indexSubOrdersData = vrpSubOrders.handlePrintIndexSubOrdersData(
+    const subOrdersData = handleSubOrdersData(data, db, ids);
+    const indexSubOrdersVsTotalOrders = handleIndexSubOrdersVsTotalOrders(
       subOrdersData,
       ids
     );
-    const distancesTwoDimensionalArrayFromData = printTwoDimensionalArray(
+    const distancesTwoDimensionalArrayFromOrdersData = handleTwoDimensionalArray(
       db,
       "distances"
     );
-    const timeTravelsTwoDimensionalArrayFromData = printTwoDimensionalArray(
+    const timeTravelsTwoDimensionalArrayFromOrdersData = handleTwoDimensionalArray(
       db,
       "timeTravels"
     );
-
-    const distancesResult = printTwoDimensionalArrayFromSubOrders(
-      indexSubOrdersData,
-      distancesTwoDimensionalArrayFromData
+    const distancesTwoDimensionalArrayFromSubOrdersData = handleTwoDimensionalArrayFromSubOrders(
+      indexSubOrdersVsTotalOrders,
+      distancesTwoDimensionalArrayFromOrdersData
     );
-
-    const timeTravelsResult = printTwoDimensionalArrayFromSubOrders(
-      indexSubOrdersData,
-      timeTravelsTwoDimensionalArrayFromData
+    const timeTravelsTwoDimensionalArrayFromSubOrdersData = handleTwoDimensionalArrayFromSubOrders(
+      indexSubOrdersVsTotalOrders,
+      timeTravelsTwoDimensionalArrayFromOrdersData
     );
-
-    const detailOrders = funcSubOrderRoutes(
+    const updateSubOrdersData = handleAssignTimeTravelsAndDistancesValueToSubOrdersData(
       subOrdersData,
-      timeTravelsResult,
-      distancesResult
+      timeTravelsTwoDimensionalArrayFromSubOrdersData,
+      distancesTwoDimensionalArrayFromSubOrdersData
     );
-
-    const indexResult = vrp.handleIndexRoutes(
-      detailOrders,
-      detailOrders,
+    const indexSubOrdersRoutes = handleIndexRoutes(
+      updateSubOrdersData,
+      updateSubOrdersData,
       8,
       cars
     );
-
-    const result = vrp.handleRoutes(indexResult, detailOrders, detailOrders);
+    const result = handleRoutes(
+      indexSubOrdersRoutes,
+      updateSubOrdersData,
+      updateSubOrdersData
+    );
 
     return result;
   },
