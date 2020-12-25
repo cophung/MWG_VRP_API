@@ -14,14 +14,20 @@ const {
   handleTwoDimensionalArrayFromSubOrders,
   handleAssignTimeTravelsAndDistancesValueToSubOrdersData,
 } = require("../util/vrpSubOrders");
+const { updateUppercaseServiceTime } = require("../util/util");
 
 const ids = readFileJson("./db/id.json");
 const db = readFileJson("./db/db.json");
 
 const cars = { capacity: 15 };
+const vehicles = {
+  weight_limit: 30,
+  number: 8,
+};
+const updateData = updateUppercaseServiceTime(db);
 
 module.exports = {
-  handleIndexRoutes: () => handleIndexRoutes(ids, db, 7, cars),
+  handleIndexRoutes: () => handleIndexRoutes(updateData, vehicles),
   handleRoutes: () => {
     const indexRoutes = handleIndexRoutes(ids, db, 7, cars);
     const routes = handleRoutes(indexRoutes, ids, db);
