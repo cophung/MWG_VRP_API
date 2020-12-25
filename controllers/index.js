@@ -46,15 +46,6 @@ module.exports = {
     });
   },
 
-  //danh sach tai xe voi don hang
-  getDriverWithOrders: function (req, res) {
-    const data = models.handleDriverWithOrders();
-    res.status(200).send({
-      success: "true",
-      data,
-    });
-  },
-
   postSubOrders: (req, res) => {
     const { body } = req;
     const routes = models.handleSubOrdersRoutes(body);

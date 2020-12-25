@@ -470,192 +470,40 @@ const vrp = {
   },
 };
 
-module.exports = {
-  /**
-   *
-   * @param {array} ids thong tin khach hang
-   * @param {array} db thong tin danh sach order
-   * @param {number} startTime thoi gian bat dau hoat dong cua kho
-   * @param {object} cars { capacity } suc chua cua xe tai
-   * @param {*} bikes { capacity } suc chua cua xe motor
-   */
-  // handleIndexRoutes: function (ids, db, startTime, cars, bikes) {
-  //   let routes = [];
-
-  //   const createNewRoute = function () {
-  //     let route = [0, 0];
-  //     routes.push(route);
-  //   };
-
-  //   const getRoutes = () => {
-  //     return routes.filter((r) => r.length > 2);
-  //   };
-
-  //   const insertNode = (route, node) => {
-  //     route.shift();
-  //     route.unshift(node);
-  //     route.unshift(0);
-  //   };
-
-  //   const isRouteEmty = (route) => {
-  //     if (route.length < 3) return true;
-  //     return false;
-  //   };
-
-  //   const getTravelTime = (startNode, endNode) => {
-  //     let timetravels = db.map((x) => x.timeTravels);
-  //     return timetravels[startNode][endNode];
-  //   };
-
-  //   const getSortedTravelTimes = (startNode) => {
-  //     let timetravels = db.map((x) => x.timeTravels);
-  //     let unSortedTimeTravels = timetravels[startNode].map(function (x, i) {
-  //       return [[startNode, i], x];
-  //     });
-  //     let sortedTimeTravels = unSortedTimeTravels
-  //       .map((x) => x)
-  //       .sort((a, b) => {
-  //         if (a[1] == b[1]) return 0;
-  //         if (a[1] < b[1]) return -1;
-  //         return 1;
-  //       });
-  //     return sortedTimeTravels.filter((x) => x[0][0] != x[0][1]);
-  //   };
-
-  //   const getSortedTravelTimesOnEndNodes = (endNode) => {
-  //     let timetravels = db.map((x) => x.timeTravels);
-  //     let unSortedTimeTravels = timetravels
-  //       .map((tt) => tt[endNode])
-  //       .map(function (x, i) {
-  //         return [[i, endNode], x];
-  //       });
-  //     let sortedTimeTravels = unSortedTimeTravels
-  //       .map((x) => x)
-  //       .sort((a, b) => {
-  //         if (a[1] == b[1]) return 0;
-  //         if (a[1] < b[1]) return -1;
-  //         return 1;
-  //       });
-  //     return sortedTimeTravels.filter((x) => x[0][0] != x[0][1]);
-  //   };
-
-  //   const getServiceTime = (node) => {
-  //     let serviceTimes = db.map((x) => x.order.serviceTime);
-  //     return serviceTimes[node];
-  //   };
-
-  //   const getTimeWindow = (node) => {
-  //     let timeWindows = db.map((x) => x.order.timeWindow);
-  //     return timeWindows[node];
-  //   };
-
-  //   const calculateTimeAfterServiced = (startNode, endNode, timeStart) => {
-  //     let timeArrived = timeStart + getTravelTime(startNode, endNode);
-  //     //arrive early
-  //     let timeToCallCus;
-  //     if (timeArrived < getTimeWindow(endNode)[0])
-  //       timeToCallCus = getTimeWindow(endNode)[0];
-  //     else timeToCallCus = timeArrived;
-  //     return timeToCallCus + getServiceTime(endNode);
-  //   };
-
-  //   const isArrivedOnTime = (node, arrivedTime) => {
-  //     let timeWindow = getTimeWindow(node);
-  //     return arrivedTime < timeWindow[1];
-  //   };
-
-  //   const isInCapacity = (route) => {
-  //     let weights = db.filter((x) => x != db[0]).map((x) => x.order.weight);
-  //     let routeTotalWeight = route
-  //       .filter((x) => x != 0)
-  //       .map((x) => weights[x - 1])
-  //       .reduce((a, b) => a + b);
-  //     return routeTotalWeight <= cars.capacity;
-  //   };
-
-  //   const isRouteAchievable = (route) => {
-  //     let sTime = startTime;
-  //     for (let i = 0; i < route.length - 3; i++) {
-  //       sTime = calculateTimeAfterServiced(route[i], route[i + 1], sTime);
-  //     }
-  //     let timeArrivedLastNode =
-  //       sTime + getTravelTime(route[route.length - 3], route[route.length - 2]);
-  //     return (
-  //       isArrivedOnTime(route[route.length - 2], timeArrivedLastNode) &&
-  //       isInCapacity(route)
-  //     );
-  //     //return false
-  //   };
-
-  //   const isOKtoPut = (route, node) => {
-  //     if (isRouteEmty(route)) return true;
-  //     let copiedRoute = route.map((x) => x);
-  //     insertNode(copiedRoute, node);
-  //     return isRouteAchievable(copiedRoute);
-  //   };
-
-  //   const createCustomers = (numberOfCustomers) => {
-  //     let cus = [];
-  //     for (let i = 1; i < numberOfCustomers; i++) {
-  //       cus.push(i);
-  //     }
-  //     return cus;
-  //   };
-
-  //   const find = () => {
-  //     let cus = createCustomers(ids.length);
-  //     while (cus.length > 0) {
-  //       if (routes.length == 0) createNewRoute();
-  //       let latestRoute = routes[routes.length - 1];
-  //       let sortedTimeTravels = getSortedTravelTimesOnEndNodes(
-  //         latestRoute[0]
-  //       ).filter((x) => cus.includes(x[0][0]));
-  //       while (cus.length > 0 && sortedTimeTravels.length > 0) {
-  //         if (isOKtoPut(latestRoute, sortedTimeTravels[0][0][0], startTime)) {
-  //           insertNode(latestRoute, sortedTimeTravels[0][0][0]);
-  //           cus = cus.filter((x) => x != sortedTimeTravels[0][0][0]);
-  //         }
-  //         sortedTimeTravels.shift();
-  //       }
-  //       createNewRoute();
-  //     }
-  //   };
-
-  //   find();
-  //   return getRoutes();
-  // },
-
-  handleIndexRoutes: (orders, vehicles) => {
-    vrp.import(orders, vehicles);
-    const result = vrp.run(20);
-    return result;
+const vrpRoute = {
+  import(indexRoutes, customers, orders) {
+    this.indexRoutes = indexRoutes;
+    this.customers = customers;
+    this.orders = orders;
   },
-
-  handleRoutes: (indexRoutes, customers, orders) => {
-    let routes = indexRoutes.map((subIndexRoutes) => {
-      let detailRoute = subIndexRoutes.map((index) => {
-        const order = orders[index];
+  main() {
+    const routes = this.indexRoutes.map((subIndexRoutes) => {
+      const detailRoute = subIndexRoutes.map((index) => {
+        const order = this.orders[index];
         const cloneOrder = _.cloneDeep(
           _.omit(order, ["distances", "timeTravels"])
         );
-        cloneOrder.name = customers[index].name;
-
+        cloneOrder.name = this.customers[index].name;
         return cloneOrder;
       });
-
       return detailRoute;
     });
 
     return routes;
   },
+};
 
-  //
-  handleLocations: (routes, db) => {
-    let routesLocations = routes.map((route, index) => {
-      let temptLocations = route.map((e) => {
+const vrpLocations = {
+  import(routes, orders) {
+    this.routes = routes;
+    this.orders = orders;
+  },
+  main() {
+    const routesLocations = this.routes.map((route) => {
+      const temptLocations = route.map((e) => {
         return {
-          long: db[e].order.long,
-          lat: db[e].order.lat,
+          long: this.orders[e].order.long,
+          lat: this.orders[e].order.lat,
         };
       });
 
@@ -663,72 +511,124 @@ module.exports = {
     });
     return routesLocations;
   },
+};
 
-  /**
-   *
-   * @param {*} orders
-   * @param {*} customers
-   */
-  //chi tiet don hang ban dau
-  handleDetailOrders: (orders, customers) => {
-    let cloneOrders = orders.map((order, index) => {
-      const cloneOrder = _.cloneDeep(
-        _.omit(order, ["distances", "timeTravels"])
-      );
-      cloneOrder.name = customers[index].name;
-      return cloneOrder;
-    });
-
-    return cloneOrders;
+const userSelectOrders = {
+  import(orders, dbOrders) {
+    this.orders = _.cloneDeep(orders);
+    this.dbOrders = _.cloneDeep(dbOrders);
   },
-
-  /**
-   *
-   * @param {array} indexRoutes mang index tuyen duong
-   * @param {array} orders thong tin mang order ban dau
-   */
-  handleTimeTravels: (indexRoutes, orders) => {
-    let timeTravels = [];
-    indexRoutes.forEach((indexRoute) => {
-      let subTimeTravels = [];
-      for (let index = 0; index < indexRoute.length - 1; index++) {
-        subTimeTravels.push(orders[index].timeTravels[index + 1]);
-      }
-      timeTravels.push(subTimeTravels);
-    });
-    return timeTravels;
-  },
-
-  /**
-   *
-   * @param {array} routes  tuyen duong chi tiet
-   * @param {array} timeTravels chua danh sach mang time travel
-   * @param {array} drivers  danh sach thong tin tai xe
-   * @param {object} cars { capacity }
-   */
-  handleDriverWithOrder: (routes, timeTravels, drivers, cars) => {
-    const { capacity } = cars;
-    const routesWithDrivers = routes.map((route, index) => {
-      const { id, name } = drivers[index];
-      let weightOrders = 0;
-
-      route.forEach((subRoute) => {
-        const { weight } = subRoute.order;
-        weightOrders += weight;
-      });
+  subOrdersData() {
+    const cloneOrders = this.orders.map((item) => {
+      const {
+        id,
+        long,
+        lat,
+        name,
+        place,
+        serviceTime,
+        timeWindow,
+        weight,
+      } = item;
 
       return {
         id,
         name,
-        ngay: 0,
-        thang: 0,
-        capacity,
-        weightOrders,
-        timeTravels: timeTravels[index],
-        route,
+        place,
+        order: { weight, long, lat, serviceTime, timeWindow },
       };
     });
 
-    return routesWithDrivers;
+    const cloneDepot = _.cloneDeep(this.dbOrders[0]);
+    const { id, place, order } = cloneDepot;
+    const nameDepot = this.dbOrders[0].name;
+
+    return [{ id, name: nameDepot, place, order }, ...cloneOrders];
   },
+  indexSubOrdersVsTotalOrders() {
+    const orders = this.subOrdersData();
+    const result = orders.map((item, index) => {
+      const { id } = item;
+      let indexCustomer;
+
+      this.dbOrders.forEach((customer, i) => {
+        if (id === customer.id) {
+          indexCustomer = i;
+        }
+      });
+
+      return indexCustomer;
+    });
+
+    return result;
+  },
+  handleArrayOptions(option) {
+    const result = this.dbOrders.map((item) => {
+      switch (option) {
+        case "distances":
+          const { distances } = item;
+          return distances;
+        case "timeTravels":
+          const { timeTravels } = item;
+          return timeTravels;
+        default:
+          break;
+      }
+    });
+
+    return result;
+  },
+  timeTravelsArrayFromOrdersSelect() {
+    const indexOrders = this.indexSubOrdersVsTotalOrders();
+    const timeTravelsArrray = this.handleArrayOptions("timeTravels");
+
+    const result = indexOrders.map((item) => {
+      const subTimeTravelsArray = timeTravelsArrray[item];
+      const timeTravels = indexOrders.map((subItem) => {
+        return subTimeTravelsArray[subItem];
+      });
+      return timeTravels;
+    });
+    return result;
+  },
+  distancesArrayFromOrdersSelect() {
+    const indexOrders = this.indexSubOrdersVsTotalOrders();
+    const distancesArray = this.handleArrayOptions("distances");
+
+    const result = indexOrders.map((item) => {
+      const subDistancesArray = distancesArray[item];
+      const distances = indexOrders.map((subItem) => {
+        return subDistancesArray[subItem];
+      });
+      return distances;
+    });
+    return result;
+  },
+  assignTimeTravelsAndDistancesToOrders() {
+    const orders = this.subOrdersData();
+    const timeTravel = this.timeTravelsArrayFromOrdersSelect();
+    const distances = this.distancesArrayFromOrdersSelect();
+
+    const result = orders.map((item, index) => {
+      const cloneItem = _.cloneDeep(item);
+
+      cloneItem.distances = timeTravel[index];
+      cloneItem.timeTravels = distances[index];
+
+      return cloneItem;
+    });
+
+    return result;
+  },
+  main() {
+    const result = this.assignTimeTravelsAndDistancesToOrders();
+    return result;
+  },
+};
+
+module.exports = {
+  vrp,
+  vrpRoute,
+  vrpLocations,
+  userSelectOrders,
 };

@@ -19,7 +19,6 @@ router.get("/getLocations", getLocations);
 router.get("/getOrders", getOrders);
 router.get("/getCustomers", getCustomers);
 router.get("/getDetailOrders", getDetailOrders);
-router.get("/getDriverWithOrders", getDriverWithOrders);
 
 router.post("/postSubOrders", postSubOrders);
 
