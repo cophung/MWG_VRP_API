@@ -98,7 +98,6 @@ const vrp = {
     }
 
     total = total.concat(arrRemoved);
-    //console.log("total2", total);
     return total;
   },
 
@@ -351,12 +350,10 @@ const vrp = {
       orders1,
       null
     );
-    //console.log("index routing: ", routeIndex);
     let CalTotalTimeFirstRoute = this.calTotalTime(routeIndex, orders1);
     let lengthRouteFirstRoute = this.getRoutific(routeIndex).length;
     let Routific = this.getRoutific(routeIndex);
     let RoutificDemo = Routific.slice();
-
     let LenTotal = [];
     let ArrayRemoved = [];
     for (let i = 0; i < RoutificDemo.length; i++) {
@@ -365,15 +362,19 @@ const vrp = {
     let f = JSON.parse(JSON.stringify(RoutificDemo));
     let lenf = JSON.parse(JSON.stringify(RoutificDemo)).length;
 
+    if (lenf === 1) {
+      return this.getRoutific(routeIndex);
+    }
+
     for (let Ramdom = 0; Ramdom < runtime; Ramdom++) {
       let c = 0;
-      //console.log("lenflenflenflenflenflenflenflenflenflenf",lenf)
       RoutificDemo = JSON.parse(JSON.stringify(f));
       ArrayRemoved = [];
       let RouteTrue = true;
       while (RouteTrue) {
         let IndexMinRouter = this.getRandomInt(0, RoutificDemo.length);
         let Route = RoutificDemo[IndexMinRouter];
+
         RoutificDemo = RoutificDemo.filter(
           (item, index) => index !== IndexMinRouter
         );
@@ -433,6 +434,7 @@ const vrp = {
           }
         }
         c++;
+
         if (c === lenf - 1) {
           RouteTrue = false;
         }
@@ -452,7 +454,6 @@ const vrp = {
         if (lengthRouteFirstRoute > LengthRoute) {
           RouteFinish = calrouteRouteExiting;
           lengthRouteFirstRoute = LengthRoute;
-          console.log(RouteFinish);
         }
         if (
           (LengthRoute =
