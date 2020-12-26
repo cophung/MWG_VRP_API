@@ -613,12 +613,11 @@ const userSelectOrders = {
     const result = orders.map((item, index) => {
       const cloneItem = _.cloneDeep(item);
 
-      cloneItem.distances = timeTravel[index];
-      cloneItem.timeTravels = distances[index];
+      cloneItem.distances = distances[index];
+      cloneItem.timeTravels = timeTravel[index];
 
       return cloneItem;
     });
-
     return result;
   },
   main() {
