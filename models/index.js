@@ -3,8 +3,11 @@ const {
   vrp,
   vrpRoute,
   userSelectOrders,
+  footerTimeline,
 } = require("../util/vrp");
+const { routific } = require("../util/routific");
 const { readFileJson, updateUppercaseServiceTime } = require("../util/util");
+const { calculator } = require("../util/calculator");
 
 const ids = readFileJson("./db/id.json");
 const db = readFileJson("./db/db.json");
@@ -25,7 +28,24 @@ module.exports = {
   handleIndexRoutes: () => {
     vrp.import(updateData, vehicles);
     let result = vrp.run();
-    return result;
+
+    routific.import(updateData, ids, result, {});
+
+    const resultB = result.map((item, index) => {
+      const timeWindows = routific.getTimeWindowsOnRoute(index);
+      const serviceTimes = routific.getServiceTimesOnRoute(index);
+      let timeTravles = routific.getTimeTravelsOnRoute(index);
+
+      console.log(timeWindows, serviceTimes, timeTravles);
+
+      return calculator.getKhoangThoiGianKhoiHanh(
+        timeWindows,
+        serviceTimes,
+        timeTravles
+      );
+    });
+
+    return resultB;
   },
 
   handleRoutes: () => {
@@ -54,5 +74,15 @@ module.exports = {
     vrpRoute.import(indexRoutes, ordersUpdate, ordersUpdate);
 
     return vrpRoute.main();
+  },
+
+  handleFooterTimeline: (apiRequest) => {
+    vrp.import(updateData, vehicles);
+    let indexRoutes = vrp.run();
+    footerTimeline.import(indexRoutes, updateData);
+    let idRoutes = footerTimeline.toRoutesAccordId();
+    let newIdRoutes = footerTimeline.computeTransaction(idRoutes, apiRequest);
+
+    return footerTimeline.toRouteIndex(newIdRoutes);
   },
 };

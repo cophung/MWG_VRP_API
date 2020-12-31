@@ -1,5 +1,4 @@
 const models = require("../models/index");
-const vrp = require("../util/vrp");
 
 module.exports = {
   getIndexRoutes: function (req, res) {
@@ -49,6 +48,14 @@ module.exports = {
   postSubOrders: (req, res) => {
     const { body } = req;
     const routes = models.handleSubOrdersRoutes(body);
+    res.status(200).send({
+      success: "true",
+      routes,
+    });
+  },
+  postTimelineRequest: (req, res) => {
+    const { body } = req;
+    const routes = models.handleFooterTimeline(body);
     res.status(200).send({
       success: "true",
       routes,

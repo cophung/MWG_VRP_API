@@ -1,7 +1,7 @@
 const _ = require("lodash");
 
 const vrp = {
-  import(db, vehicles) {
+  import(db, vehicles, calculator = null) {
     this.orders = db;
     this.vehicles = vehicles;
   },
@@ -626,9 +626,167 @@ const userSelectOrders = {
   },
 };
 
+const API_Request_Constants = {
+  CHUYEN_TRAI: "CHUYEN_TRAI",
+  CHUYEN_PHAI: "CHUYEN_PHAI",
+  DOI_CHO: "DOI_CHO",
+  GOC: "GOC",
+};
+
+const footerTimeline = {
+  import(routes, orders) {
+    this.routes = routes;
+    this.orders = orders;
+  },
+  toRoutesAccordId() {
+    let orders = footerTimeline.orders;
+    return this.routes.map((r) => {
+      return r.map(function (nodes, i) {
+        return orders[nodes].id;
+      });
+    });
+  },
+
+  computeTransaction(routesAcordId, apiRequest) {
+    let routeIndexContainCus;
+    let routesClone;
+    let cusIndex;
+    let routesWithKey;
+
+    switch (apiRequest.type) {
+      case API_Request_Constants.CHUYEN_TRAI:
+        routesWithKey = routesAcordId.map(function (r, i) {
+          return {
+            stt: i,
+            nodes: r,
+          };
+        });
+
+        routeIndexContainCus = routesWithKey.filter((x) =>
+          x.nodes.includes(apiRequest.data)
+        )[0].stt;
+        routesClone = _.clone(routesAcordId, true);
+
+        cusIndex = routesClone[routeIndexContainCus]
+          .map((node, i) => {
+            return {
+              stt: i,
+              node: node,
+            };
+          })
+          .filter((x) => x.node == apiRequest.data)[0].stt;
+
+        if (cusIndex < 2) return routesAcordId;
+        routesClone[routeIndexContainCus][cusIndex] =
+          routesClone[routeIndexContainCus][cusIndex - 1];
+        routesClone[routeIndexContainCus][cusIndex - 1] = apiRequest.data;
+        return routesClone;
+
+      case API_Request_Constants.CHUYEN_PHAI:
+        routesWithKey = routesAcordId.map(function (r, i) {
+          return {
+            stt: i,
+            nodes: r,
+          };
+        });
+
+        routeIndexContainCus = routesWithKey.filter((x) =>
+          x.nodes.includes(apiRequest.data)
+        )[0].stt;
+        routesClone = _.clone(routesAcordId, true);
+
+        cusIndex = routesClone[routeIndexContainCus]
+          .map((node, i) => {
+            return {
+              stt: i,
+              node: node,
+            };
+          })
+          .filter((x) => x.node == apiRequest.data)[0].stt;
+        if (cusIndex > routesClone[routeIndexContainCus].length - 2)
+          return routesAcordId;
+        routesClone[routeIndexContainCus][cusIndex] =
+          routesClone[routeIndexContainCus][cusIndex + 1];
+        routesClone[routeIndexContainCus][cusIndex + 1] = apiRequest.data;
+        return routesClone;
+
+      case API_Request_Constants.DOI_CHO: {
+        let routeIndexContainCus1 = routesAcordId
+          .map(function (r, i) {
+            return {
+              stt: i,
+              nodes: r,
+            };
+          })
+          .filter((x) => x.nodes.includes(apiRequest.data[0]))[0].stt;
+
+        let routeIndexContainCus2 = routesAcordId
+          .map(function (r, i) {
+            return {
+              stt: i,
+              nodes: r,
+            };
+          })
+          .filter((x) => x.nodes.includes(apiRequest.data[1]))[0].stt;
+
+        routesClone = _.clone(routesAcordId, true);
+
+        let cus1Index = routesClone[routeIndexContainCus1]
+          .map((node, i) => {
+            return {
+              stt: i,
+              node: node,
+            };
+          })
+          .filter((x) => x.node == apiRequest.data[0])[0].stt;
+
+        let cus2Index = routesClone[routeIndexContainCus2]
+          .map((node, i) => {
+            return {
+              stt: i,
+              node: node,
+            };
+          })
+          .filter((x) => x.node == apiRequest.data[1])[0].stt;
+
+        routesClone[routeIndexContainCus1][cus1Index] = apiRequest.data[1];
+
+        routesClone[routeIndexContainCus2][cus2Index] = apiRequest.data[0];
+
+        return routesClone.map(function (r, i) {
+          return r.map(function (n, j) {
+            if (i == routeIndexContainCus1 && j == cus1Index) {
+              return apiRequest.data[1];
+            }
+
+            if (i == routeIndexContainCus2 && j == cus2Index) {
+              return apiRequest.data[0];
+            }
+
+            return n;
+          });
+        });
+      }
+
+      default:
+        return routesAcordId;
+    }
+  },
+
+  toRouteIndex(routesId) {
+    const orders = this.orders;
+    return routesId.map(function (r, i) {
+      return r.map(function (node, j) {
+        return orders.findIndex((x) => x.id === node);
+      });
+    });
+  },
+};
+
 module.exports = {
   vrp,
   vrpRoute,
   vrpLocations,
   userSelectOrders,
+  footerTimeline,
 };
