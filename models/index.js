@@ -27,25 +27,27 @@ module.exports = {
 
   handleIndexRoutes: () => {
     vrp.import(updateData, vehicles);
-    let result = vrp.run();
+    let indexRoutes = vrp.run();
 
-    routific.import(updateData, ids, result, {});
+    return indexRoutes;
+  },
 
-    const resultB = result.map((item, index) => {
+  handleStartTimesInIndexRoutes: (indexRoutes) => {
+    routific.import(updateData, ids, indexRoutes, {});
+
+    const startTimes = indexRoutes.map((item, index) => {
       const timeWindows = routific.getTimeWindowsOnRoute(index);
       const serviceTimes = routific.getServiceTimesOnRoute(index);
       let timeTravles = routific.getTimeTravelsOnRoute(index);
 
-      console.log(timeWindows, serviceTimes, timeTravles);
-
-      return calculator.getKhoangThoiGianKhoiHanh(
+      return calculator.getKhoangThoiGianNenKhoiHanh(
         timeWindows,
         serviceTimes,
         timeTravles
       );
     });
 
-    return resultB;
+    return startTimes;
   },
 
   handleRoutes: () => {

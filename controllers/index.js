@@ -3,9 +3,12 @@ const models = require("../models/index");
 module.exports = {
   getIndexRoutes: function (req, res) {
     const routes = models.handleIndexRoutes();
+    const startTimes = models.handleStartTimesInIndexRoutes(routes);
+
     res.status(200).send({
       success: "true",
       routes,
+      startTimes,
     });
   },
   getRoutes: function (req, res) {

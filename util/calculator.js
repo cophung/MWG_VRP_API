@@ -1,10 +1,10 @@
 const calculator = {
-  // getKhoangThoiGianKhoiHanh(timeWindowsHienTai, serviceTimeHienTai) {
-  //   return [
-  //     timeWindowsHienTai[0] + serviceTimeHienTai,
-  //     timeWindowsHienTai[1] + serviceTimeHienTai,
-  //   ];
-  // },
+  getKhoangThoiGianKhoiHanh(timeWindowsHienTai, serviceTimeHienTai) {
+    return [
+      timeWindowsHienTai[0] + serviceTimeHienTai,
+      timeWindowsHienTai[1] + serviceTimeHienTai,
+    ];
+  },
   getKhoangThoiGianDenGap(
     timeWindowsHienTai,
     serviceTimeHienTai,
@@ -76,6 +76,7 @@ const calculator = {
   },
   getKhoangThoiGianDenGapKhachCuoiCung(timeWindows, serviceTimes, timeTravles) {
     let timeWindow = timeWindows[0];
+    console.log(timeTravles);
     for (i = 0; i < timeTravles.length; i++) {
       timeWindow = this.getKhoangThoiGianDenGap(
         timeWindow,
@@ -86,17 +87,32 @@ const calculator = {
     }
     return timeWindow;
   },
-  getKhoangThoiGianKhoiHanh(timeWindows, serviceTimes, timeTravles) {
+  // getKhoangThoiGianNenKhoiHanh(timeWindows, serviceTimes, timeTravles) {
+  //   let khoangThoiGianDenGapKhachCuoiCung = this.getKhoangThoiGianDenGapKhachCuoiCung(
+  //     timeWindows,
+  //     serviceTimes,
+  //     timeTravles
+  //   );
+  //   return khoangThoiGianDenGapKhachCuoiCung.map(
+  //     (x) =>
+  //       x -
+  //       serviceTimes.reduce((a, b) => a + b) -
+  //       timeTravles.reduce((a, b) => a + b)
+  //   );
+  // },
+  getKhoangThoiGianNenKhoiHanh(timeWindows, serviceTimes, timeTravles) {
     let khoangThoiGianDenGapKhachCuoiCung = this.getKhoangThoiGianDenGapKhachCuoiCung(
       timeWindows,
       serviceTimes,
-      timeTravles
+      timeTravles.filter((x, i) => i != 0 && i != timeTravles.length - 1)
     );
     return khoangThoiGianDenGapKhachCuoiCung.map(
       (x) =>
         x -
         serviceTimes.reduce((a, b) => a + b) -
-        timeTravles.reduce((a, b) => a + b)
+        timeTravles
+          .filter((x, i) => i != timeTravles.length - 1)
+          .reduce((a, b) => a + b)
     );
   },
   randomizeThoiDiemTrongKhungGio(timeWindow) {
