@@ -25,7 +25,7 @@ const vrp = {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
   },
-  CalAmountRoute(ArrayRemoved, orders1) {
+  CalAmountRoute(ArrayRemoved, orders1, weight_limit) {
     let arr = ArrayRemoved.slice();
 
     arr.push(0);
@@ -34,7 +34,13 @@ const vrp = {
     });
 
     const findOrder = this.findOrderRoute(arr, orders1);
-    const insertroute = this.funcIndexRoute(142205, 30, 5, findOrder, arr);
+    const insertroute = this.funcIndexRoute(
+      142205,
+      weight_limit,
+      5,
+      findOrder,
+      arr
+    );
 
     let insertrouterest = insertroute.map((x, index) => arr[x]);
 
@@ -439,7 +445,11 @@ const vrp = {
           RouteTrue = false;
         }
 
-        let getRouteRest = this.CalAmountRoute(ArrayRemoved, orders1);
+        let getRouteRest = this.CalAmountRoute(
+          ArrayRemoved,
+          orders1,
+          weight_limit
+        );
         let calrouteRouteExiting = this.CalrouteRouteExiting(
           RoutificDemo,
           getRouteRest

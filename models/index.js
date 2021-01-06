@@ -1,4 +1,3 @@
-const fs = require("fs");
 const {
   vrpLocations,
   vrp,
@@ -14,7 +13,7 @@ const idDB = readFileJson("./db/db1/id.json");
 const DB = readFileJson("./db/db1/db.json");
 
 const vehicles = {
-  weight_limit: 30,
+  weight_limit: 300,
   number: 8,
 };
 const updateData = updateUppercaseServiceTime(DB);
@@ -59,14 +58,14 @@ module.exports = {
   },
 
   handleRoutes2: () => {
-    const DB2 = readFileJson("./db/db2/db.json");
-    // const updateData2 = updateUppercaseServiceTime(DB2);
+    const DB2 = readFileJson("./db/db5/db.json");
+    const updateData2 = updateUppercaseServiceTime(DB2);
 
-    // vrp.import(updateData2, vehicles);
-    // let indexRoutes2 = vrp.run();
-    // vrpRoute.import(indexRoutes1, DB1, DB1);
-    // return vrpRoute.main();
-    return DB2;
+    vrp.import(updateData2, vehicles);
+    let indexRoutes2 = vrp.run();
+    vrpRoute.import(indexRoutes2, DB2, DB2);
+    return vrpRoute.main();
+    // return indexRoutes2;
   },
 
   handleLocations: () => {
