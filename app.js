@@ -6,7 +6,7 @@ let index = require("./routes/index");
 let dataRoutes = require("./routes/createData");
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));

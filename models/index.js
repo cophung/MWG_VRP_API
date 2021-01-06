@@ -60,7 +60,7 @@ module.exports = {
 
   handleRoutes2: () => {
     const DB2 = readFileJson("./db/db2/db.json");
-    const updateData2 = updateUppercaseServiceTime(DB2);
+    // const updateData2 = updateUppercaseServiceTime(DB2);
 
     // vrp.import(updateData2, vehicles);
     // let indexRoutes2 = vrp.run();

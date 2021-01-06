@@ -110,7 +110,7 @@ const createData = (path, numberOfCustomers, isSetServiceTime) => {
 };
 
 module.exports = {
-  randomVehicles: () => createData("./db/db.json", 16, true),
-  randomMotor: () => createData("./db/db.json", 10, false),
+  randomVehicles: () => createData("./db/db1/db.json", 16, true),
+  randomMotor: () => createData("./db/db1/db.json", 10, false),
   constantMotor: () => readFileJson("./test/dbMotor.json"),
 };
