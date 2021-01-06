@@ -2,17 +2,24 @@ const models = require("../models/index");
 
 module.exports = {
   getIndexRoutes: function (req, res) {
-    const routes = models.handleIndexRoutes();
-    const startTimes = models.handleStartTimesInIndexRoutes(routes);
+    const indexRoutes = models.handleIndexRoutes();
+    const startTimes = models.handleStartTimesInIndexRoutes(indexRoutes);
 
     res.status(200).send({
       success: "true",
-      routes,
+      routes: indexRoutes,
       startTimes,
     });
   },
   getRoutes: function (req, res) {
     const routes = models.handleRoutes();
+    res.status(200).send({
+      success: "true",
+      routes,
+    });
+  },
+  getRoutes2: (req, res) => {
+    const routes = models.handleRoutes2();
     res.status(200).send({
       success: "true",
       routes,

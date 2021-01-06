@@ -1,3 +1,4 @@
+const fs = require("fs");
 const {
   vrpLocations,
   vrp,
@@ -9,21 +10,21 @@ const { routific } = require("../util/routific");
 const { readFileJson, updateUppercaseServiceTime } = require("../util/util");
 const { calculator } = require("../util/calculator");
 
-const ids = readFileJson("./db/id.json");
-const db = readFileJson("./db/db.json");
+const idDB = readFileJson("./db/db1/id.json");
+const DB = readFileJson("./db/db1/db.json");
 
 const vehicles = {
   weight_limit: 30,
   number: 8,
 };
-const updateData = updateUppercaseServiceTime(db);
+const updateData = updateUppercaseServiceTime(DB);
 
 module.exports = {
-  handleOrders: () => db,
+  handleOrders: () => DB,
 
-  handleDetailOrders: () => db,
+  handleDetailOrders: () => DB,
 
-  handleCustomers: () => ids,
+  handleCustomers: () => idDB,
 
   handleIndexRoutes: () => {
     vrp.import(updateData, vehicles);
@@ -33,7 +34,7 @@ module.exports = {
   },
 
   handleStartTimesInIndexRoutes: (indexRoutes) => {
-    routific.import(updateData, ids, indexRoutes, {});
+    routific.import(updateData, idDB, indexRoutes, {});
 
     const startTimes = indexRoutes.map((item, index) => {
       const timeWindows = routific.getTimeWindowsOnRoute(index);
@@ -53,21 +54,32 @@ module.exports = {
   handleRoutes: () => {
     vrp.import(updateData, vehicles);
     let indexRoutes = vrp.run();
-    vrpRoute.import(indexRoutes, ids, db);
+    vrpRoute.import(indexRoutes, idDB, DB);
     return vrpRoute.main();
+  },
+
+  handleRoutes2: () => {
+    const DB2 = readFileJson("./db/db2/db.json");
+    const updateData2 = updateUppercaseServiceTime(DB2);
+
+    // vrp.import(updateData2, vehicles);
+    // let indexRoutes2 = vrp.run();
+    // vrpRoute.import(indexRoutes1, DB1, DB1);
+    // return vrpRoute.main();
+    return DB2;
   },
 
   handleLocations: () => {
     vrp.import(updateData, vehicles);
     const routes = vrp.run();
-    vrpLocations.import(routes, db);
+    vrpLocations.import(routes, DB);
     return vrpLocations.main();
   },
 
   handleSubOrdersRoutes: (orders) => {
     const { data } = orders;
 
-    userSelectOrders.import(data, db);
+    userSelectOrders.import(data, DB);
     const ordersUpdate = userSelectOrders.main();
 
     vrp.import(updateUppercaseServiceTime(ordersUpdate), vehicles);
