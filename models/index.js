@@ -13,7 +13,7 @@ const idDB = readFileJson("./db/db2/id.json");
 const DB = readFileJson("./db/db2/db.json");
 
 const vehicles = {
-  weight_limit: 300,
+  weight_limit: 200,
   number: 8,
 };
 const updateData = updateUppercaseServiceTime(DB);
