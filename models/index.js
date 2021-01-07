@@ -9,11 +9,11 @@ const { routific } = require("../util/routific");
 const { readFileJson, updateUppercaseServiceTime } = require("../util/util");
 const { calculator } = require("../util/calculator");
 
-const idDB = readFileJson("./db/db2/id.json");
-const DB = readFileJson("./db/db2/db.json");
+const idDB = readFileJson("./db/db1/id.json");
+const DB = readFileJson("./db/db1/db.json");
 
 const vehicles = {
-  weight_limit: 200,
+  weight_limit: 30,
   number: 8,
 };
 const updateData = updateUppercaseServiceTime(DB);
