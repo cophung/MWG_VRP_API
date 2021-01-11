@@ -59,7 +59,7 @@ module.exports = {
     const routeTimeline = models.getSubRouteTimeline();
     res.status(200).send({
       success: "true",
-      routes: routeTimeline,
+      data: routeTimeline,
     });
   },
 

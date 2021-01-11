@@ -90,7 +90,10 @@ module.exports = {
     vrpRoute.import(indexRoutes, ordersUpdate, ordersUpdate);
 
     //write data temp
-    writeFileJson("./db/temp/data.json", vrpRoute.main());
+    writeFileJson("./db/temp/data.json", {
+      routes: vrpRoute.main(),
+      orders: ordersUpdate,
+    });
 
     return vrpRoute.main();
   },
