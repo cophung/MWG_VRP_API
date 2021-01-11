@@ -55,6 +55,14 @@ module.exports = {
     });
   },
 
+  getSubRouteTimeline: function (req, res) {
+    const routeTimeline = models.getSubRouteTimeline();
+    res.status(200).send({
+      success: "true",
+      routes: routeTimeline,
+    });
+  },
+
   postSubOrders: (req, res) => {
     const { body } = req;
     const routes = models.handleSubOrdersRoutes(body);

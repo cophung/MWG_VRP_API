@@ -10,6 +10,16 @@ module.exports = {
     );
   },
 
+  writeFileJson: (path, data) => {
+    try {
+      let stringifyData = JSON.stringify(data);
+      fs.writeFileSync(path, stringifyData);
+      console.log("Write JSON File success");
+    } catch (error) {
+      console.log("Write JSON File Error", error);
+    }
+  },
+
   updateUppercaseServiceTime: (db) => {
     return db.map((item) => {
       let x = {};

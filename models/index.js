@@ -6,7 +6,11 @@ const {
   footerTimeline,
 } = require("../util/vrp");
 const { routific } = require("../util/routific");
-const { readFileJson, updateUppercaseServiceTime } = require("../util/util");
+const {
+  readFileJson,
+  writeFileJson,
+  updateUppercaseServiceTime,
+} = require("../util/util");
 const { calculator } = require("../util/calculator");
 
 const idDB = readFileJson("./db/db1/id.json");
@@ -65,7 +69,6 @@ module.exports = {
     let indexRoutes2 = vrp.run();
     vrpRoute.import(indexRoutes2, DB2, DB2);
     return vrpRoute.main();
-    // return indexRoutes2;
   },
 
   handleLocations: () => {
@@ -86,7 +89,14 @@ module.exports = {
 
     vrpRoute.import(indexRoutes, ordersUpdate, ordersUpdate);
 
+    //write data temp
+    writeFileJson("./db/temp/data.json", vrpRoute.main());
+
     return vrpRoute.main();
+  },
+
+  getSubRouteTimeline: () => {
+    return readFileJson("./db/temp/data.json");
   },
 
   handleFooterTimeline: (apiRequest) => {

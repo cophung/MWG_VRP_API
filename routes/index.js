@@ -7,6 +7,7 @@ const {
   getOrders,
   getCustomers,
   getDetailOrders,
+  getSubRouteTimeline,
 
   postSubOrders,
 } = require("../controllers/index");
@@ -20,6 +21,7 @@ router.get("/getLocations", getLocations);
 router.get("/getOrders", getOrders);
 router.get("/getCustomers", getCustomers);
 router.get("/getDetailOrders", getDetailOrders);
+router.get("/getSubRouteTimeline", getSubRouteTimeline);
 
 router.post("/postSubOrders", postSubOrders);
 // router.post("/postTimelineRequest", postTimelineRequest);
