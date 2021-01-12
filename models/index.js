@@ -93,6 +93,7 @@ module.exports = {
     writeFileJson("./db/temp/data.json", {
       routes: vrpRoute.main(),
       orders: ordersUpdate,
+      startTimes: module.exports.handleStartTimesInIndexRoutes(indexRoutes),
     });
 
     return vrpRoute.main();
