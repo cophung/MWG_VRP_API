@@ -52,7 +52,7 @@
       "long": 106.66277316347686,
       "lat": 10.863345807243473,
       "serviceTime": 0,
-      "weight": 4,
+      "weight": 0,
       "timeWindow": [8, 20]
     }
   },
