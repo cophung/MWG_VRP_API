@@ -111,7 +111,7 @@
       "lat": 10.844039287254915,
       "serviceTime": 1,
       "weight": 5,
-      "timeWindow": [9, 20]
+      "timeWindow": [8, 20]
     }
   },
   {
@@ -169,7 +169,7 @@
       "lat": 10.830300256818038,
       "serviceTime": 0.5,
       "weight": 6,
-      "timeWindow": [9, 20]
+      "timeWindow": [8, 20]
     }
   },
   {
@@ -227,7 +227,7 @@
       "lat": 10.859364910132415,
       "serviceTime": 3,
       "weight": 5,
-      "timeWindow": [9, 20]
+      "timeWindow": [8, 20]
     }
   },
   {
@@ -285,7 +285,7 @@
       "lat": 10.873221920575407,
       "serviceTime": 1.4,
       "weight": 7,
-      "timeWindow": [9, 20]
+      "timeWindow": [8, 20]
     }
   },
   {
@@ -343,7 +343,7 @@
       "lat": 10.85037316175362,
       "serviceTime": 2,
       "weight": 8,
-      "timeWindow": [9, 20]
+      "timeWindow": [8, 20]
     }
   },
   {
@@ -401,7 +401,7 @@
       "lat": 11.019067129568613,
       "serviceTime": 2.6,
       "weight": 2,
-      "timeWindow": [9, 20]
+      "timeWindow": [8, 20]
     }
   },
   {
@@ -459,7 +459,7 @@
       "lat": 10.84587795532407,
       "serviceTime": 1.8,
       "weight": 4,
-      "timeWindow": [9, 20]
+      "timeWindow": [8, 20]
     }
   },
   {
@@ -517,7 +517,7 @@
       "lat": 10.844354453697363,
       "serviceTime": 3.2,
       "weight": 5,
-      "timeWindow": [9, 20]
+      "timeWindow": [8, 20]
     }
   },
   {
@@ -575,7 +575,7 @@
       "lat": 10.838983426786342,
       "serviceTime": 0.8,
       "weight": 6,
-      "timeWindow": [9, 20]
+      "timeWindow": [8, 20]
     }
   },
   {
@@ -633,7 +633,7 @@
       "lat": 10.83697817820673,
       "serviceTime": 1.6,
       "weight": 8,
-      "timeWindow": [9, 20]
+      "timeWindow": [8, 20]
     }
   },
   {
@@ -691,7 +691,7 @@
       "lat": 10.82174583490033,
       "serviceTime": 1.7,
       "weight": 6,
-      "timeWindow": [9, 20]
+      "timeWindow": [8, 20]
     }
   },
   {
@@ -749,7 +749,7 @@
       "lat": 10.852011563999035,
       "serviceTime": 3,
       "weight": 8,
-      "timeWindow": [9, 20]
+      "timeWindow": [8, 20]
     }
   },
   {
@@ -807,7 +807,7 @@
       "lat": 10.869142195992755,
       "serviceTime": 1.5,
       "weight": 5,
-      "timeWindow": [9, 20]
+      "timeWindow": [8, 20]
     }
   },
   {
@@ -865,7 +865,7 @@
       "lat": 10.850394951010358,
       "serviceTime": 2.3,
       "weight": 4,
-      "timeWindow": [9, 20]
+      "timeWindow": [8, 20]
     }
   },
   {
@@ -923,7 +923,7 @@
       "lat": 10.861654021725975,
       "serviceTime": 1.8,
       "weight": 2,
-      "timeWindow": [9, 20]
+      "timeWindow": [8, 20]
     }
   },
   {
@@ -981,7 +981,7 @@
       "lat": 10.792367034950185,
       "serviceTime": 2.7,
       "weight": 3,
-      "timeWindow": [9, 20]
+      "timeWindow": [8, 20]
     }
   },
   {
@@ -1039,7 +1039,7 @@
       "lat": 10.868515360652056,
       "serviceTime": 1.6,
       "weight": 4,
-      "timeWindow": [9, 20]
+      "timeWindow": [8, 20]
     }
   },
   {
@@ -1097,7 +1097,7 @@
       "lat": 10.882092450397929,
       "serviceTime": 2,
       "weight": 3,
-      "timeWindow": [9, 20]
+      "timeWindow": [8, 20]
     }
   },
   {
@@ -1155,7 +1155,7 @@
       "lat": 10.8644118080669,
       "serviceTime": 3,
       "weight": 7,
-      "timeWindow": [9, 20]
+      "timeWindow": [8, 20]
     }
   },
   {
@@ -1213,7 +1213,7 @@
       "lat": 10.829508950486199,
       "serviceTime": 0.7,
       "weight": 5,
-      "timeWindow": [9, 20]
+      "timeWindow": [8, 20]
     }
   }
 ]
