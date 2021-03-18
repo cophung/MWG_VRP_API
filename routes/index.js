@@ -1,16 +1,17 @@
 const express = require("express");
 const {
-  getIndexRoutes,
-  getRoutes,
-  getRoutes2,
-  getLocations,
-  getOrders,
-  getCustomers,
-  getDetailOrders,
-  getSubRouteTimeline,
+    getIndexRoutes,
+    getRoutes,
+    getRoutes2,
+    getLocations,
+    getOrders,
+    getCustomers,
+    getDetailOrders,
+    getSubRouteTimeline,
 
-  postSubOrders,
+    postSubOrders,
 } = require("../controllers/index");
+const { getPurchaseOrrder } = require("../controllers/tempData");
 
 const router = express.Router();
 
@@ -22,6 +23,8 @@ router.get("/getOrders", getOrders);
 router.get("/getCustomers", getCustomers);
 router.get("/getDetailOrders", getDetailOrders);
 router.get("/getSubRouteTimeline", getSubRouteTimeline);
+
+router.get("/getPurchaseOrrder", getPurchaseOrrder);
 
 router.post("/postSubOrders", postSubOrders);
 // router.post("/postTimelineRequest", postTimelineRequest);
