@@ -61,6 +61,7 @@ module.exports = {
     res.status(200).send({
       success: "true",
       data: routeTimeline,
+      mode:"cordinating"
     });
   },
 
