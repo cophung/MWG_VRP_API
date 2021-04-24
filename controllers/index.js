@@ -9,6 +9,7 @@ module.exports = {
       success: "true",
       routes: indexRoutes,
       startTimes,
+      mode:"tracking"
     });
   },
   getRoutes: function (req, res) {
