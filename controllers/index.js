@@ -69,11 +69,14 @@ module.exports = {
     const orders = tr.orders;
     const routes = tr.routes;
     const startTimes = tr.startTimes;
+    const statuses = tr.statuses;
+
     res.status(200).send({
       success: "true",
       orders,
       routes,
       startTimes,
+      statuses,
       mode:"tracking"
     });
   },
