@@ -112,4 +112,8 @@ module.exports = {
 
     return footerTimeline.toRouteIndex(newIdRoutes);
   },
+
+  getTrackData: () => {
+    return readFileJson("./db/temp/track.data.json");
+  }
 };

@@ -64,6 +64,16 @@ module.exports = {
       mode:"cordinating"
     });
   },
+  getTrackDate: function (req, res){
+    const track = models.getTrackData();
+    res.status(200).send({
+      success: "true",
+      orders: track.orders,
+      routes: track.routes,
+      startTimes: track.startTimes,
+      mode:"tracking"
+    });
+  },
 
   postSubOrders: (req, res) => {
     const { body } = req;
