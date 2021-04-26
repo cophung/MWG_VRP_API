@@ -64,7 +64,7 @@ module.exports = {
       mode:"cordinating"
     });
   },
-  getTrackDate: function (req, res){
+  getTrackData: function (req, res){
     const track = models.getTrackData();
     res.status(200).send({
       success: "true",
