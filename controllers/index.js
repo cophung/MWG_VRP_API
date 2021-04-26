@@ -65,12 +65,15 @@ module.exports = {
     });
   },
   getTrackData: function (req, res){
-    const track = models.getTrackData();
+    const tr = models.getTrackData();
+    const orders = tr.orders;
+    const routes = tr.routes;
+    const startTimes = tr.startTimes;
     res.status(200).send({
       success: "true",
-      orders: track.orders,
-      routes: track.routes,
-      startTimes: track.startTimes,
+      orders,
+      routes,
+      startTimes,
       mode:"tracking"
     });
   },

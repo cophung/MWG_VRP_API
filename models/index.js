@@ -114,6 +114,6 @@ module.exports = {
   },
 
   getTrackData: () => {
-    return readFileJson("./db/temp/track.data.json");
+    return readFileJson("./db/temp/track.json");
   }
 };
