@@ -121,6 +121,13 @@ module.exports = {
       success: "true",
       message: "Reset DB Thành Công",
     });
+  },
+  getModifiedDate: (req, res) => {
+    const modified = models.getModifiedDate();
+    res.status(200).send({
+      success: "true",
+      modified,
+    });
   }
   
 };

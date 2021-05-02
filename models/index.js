@@ -13,6 +13,13 @@ const {
 } = require("../util/util");
 const { calculator } = require("../util/calculator");
 
+const 
+{
+  time
+} = require("../util/time");
+
+
+
 const idDB = readFileJson("./db/db1/id.json");
 const DB = readFileJson("./db/db1/db.json");
 
@@ -142,6 +149,10 @@ module.exports = {
     trackData.statuses[statusXY.i][statusXY.j] = statusId;
 
     writeFileJson("./db/temp/track.json", trackData);
+
+    const modified = time.getDateTimeNow();
+    writeFileJson("./db/temp/noti.json", modified);
+
   },
 
   getTrackData: () => {
@@ -150,11 +161,16 @@ module.exports = {
   handleResetTrackData: () => {
     const trackData = readFileJson("./db/dbTrack/track.json");
     writeFileJson("./db/temp/track.json", trackData);
+    const modified = time.getDateTimeNow();
+    writeFileJson("./db/temp/noti.json", modified);
   },
   handleResetDB: () => {
     const db = readFileJson("./db/db1/dbBackup.json");
     const id = readFileJson("./db/db1/idBackup.json");
     writeFileJson("./db/db1/db.json", db);
     writeFileJson("./db/db1/id.json", id);
+  },
+  getModifiedDate : () => {
+    return readFileJson("./db/temp/noti.json");
   }
 };
