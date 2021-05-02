@@ -150,7 +150,10 @@ module.exports = {
 
     writeFileJson("./db/temp/track.json", trackData);
 
-    const modified = time.getDateTimeNow();
+    const modified = {
+      modified: time.getDateTimeNow()
+    }
+
     writeFileJson("./db/temp/noti.json", modified);
 
   },
