@@ -167,7 +167,7 @@ module.exports = {
   handleResetTrackData: () => {
     const trackData = readFileJson("./db/dbTrack/track.json");
     writeFileJson("./db/temp/track.json", trackData);
-    const modified = time.getDateTimeNow();
+    const modified = {modified: time.getDateTimeNow()};
     writeFileJson("./db/temp/noti.json", modified);
   },
   handleResetDB: () => {
