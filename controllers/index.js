@@ -126,7 +126,7 @@ module.exports = {
     const modified = models.getModifiedDate();
     res.status(200).send({
       success: "true",
-      modified,
+      modified : modified.modified,
     });
   }
   
