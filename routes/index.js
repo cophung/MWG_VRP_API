@@ -10,7 +10,8 @@ const {
     getSubRouteTimeline,
     getTrackData,
     postSubOrders,
-    postNextStatus
+    postNextStatus,
+    postResetTrackData
 } = require("../controllers/index");
 const { getPurchaseOrrder } = require("../controllers/tempData");
 
@@ -30,6 +31,7 @@ router.get("/getPurchaseOrrder", getPurchaseOrrder);
 
 router.post("/postSubOrders", postSubOrders);
 router.post("/postNextStatus", postNextStatus);
+router.post("/postResetTrackData", postResetTrackData);
 // router.post("/postTimelineRequest", postTimelineRequest);
 
 module.exports = router;
