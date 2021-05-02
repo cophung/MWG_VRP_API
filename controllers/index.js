@@ -81,6 +81,14 @@ module.exports = {
     });
   },
 
+  postNextStatus : (req, res) => {
+    const {body} = req;
+    res.status(200).send({
+      success: "true",
+      message: "Thành công"
+    })
+  },
+
   postSubOrders: (req, res) => {
     const { body } = req;
     const routes = models.handleSubOrdersRoutes(body);
@@ -97,4 +105,5 @@ module.exports = {
       routes,
     });
   },
+  
 };
