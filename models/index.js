@@ -150,5 +150,11 @@ module.exports = {
   handleResetTrackData: () => {
     const trackData = readFileJson("./db/dbTrack/track.json");
     writeFileJson("./db/temp/track.json", trackData);
+  },
+  handleResetDB: () => {
+    const db = readFileJson("./db/db1/dbBackup.json");
+    const id = readFileJson("./db/db1/idBackup.json");
+    writeFileJson("./db/db1/db.json", db);
+    writeFileJson("./db/db1/id.json", id);
   }
 };

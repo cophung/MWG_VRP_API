@@ -114,6 +114,13 @@ module.exports = {
       success: "true",
       message: "Reset Track Data Thành Công",
     });
+  },
+  postResetDB: (req, res) => {
+    models.handleResetDB();
+    res.status(200).send({
+      success: "true",
+      message: "Reset DB Thành Công",
+    });
   }
   
 };
