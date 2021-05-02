@@ -85,7 +85,7 @@ module.exports = {
     const {body} = req;
     res.status(200).send({
       success: "true",
-      message: "Thành công"
+      message: body
     })
   },
 
