@@ -113,6 +113,37 @@ module.exports = {
     return footerTimeline.toRouteIndex(newIdRoutes);
   },
 
+  handleUpdateNextStatus: (orderId, statusId) => {
+    const trackData = readFileJson("./db/temp/track.json");
+    const isMatch = (order) => {
+      return order.id == orderId;
+    };
+
+    const orderIdIndex = trackData.orders.findIndex(isMatch);
+
+    const findXY = (index) => {
+      let corXY =  {
+        i : -1,
+        j : -1
+      };
+      trackData.routes.map((route,i) => {
+        if(route.includes(index))
+        {
+          corXY.i = i;
+          corXY.j = route.findIndex(x => x == index)
+        }
+        return route;
+      })
+
+      return corXY;
+    };
+
+    const statusXY = findXY(orderIdIndex);
+    trackData.statuses[statusXY.i][statusXY.j] = statusId;
+
+    writeFileJson("./db/temp/track.json", trackData);
+  },
+
   getTrackData: () => {
     return readFileJson("./db/temp/track.json");
   }

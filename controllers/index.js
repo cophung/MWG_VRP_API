@@ -83,9 +83,12 @@ module.exports = {
 
   postNextStatus : (req, res) => {
     const {body} = req;
+
+    models.handleUpdateNextStatus(body.orderId, body.statusId);
+
     res.status(200).send({
       success: "true",
-      message: body
+      message: "Cập nhật trạng thái thành công"
     })
   },
 
