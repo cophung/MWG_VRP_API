@@ -146,5 +146,9 @@ module.exports = {
 
   getTrackData: () => {
     return readFileJson("./db/temp/track.json");
+  },
+  handleResetTrackData: () => {
+    const trackData = readFileJson("./db/dbTrack/track.json");
+    writeFileJson("./db/temp/track.json", trackData);
   }
 };

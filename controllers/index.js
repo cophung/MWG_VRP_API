@@ -108,5 +108,12 @@ module.exports = {
       routes,
     });
   },
+  postResetTrackData: (req, res) => {
+    models.handleResetTrackData();
+    res.status(200).send({
+      success: "true",
+      message: "Reset Track Data Thành Công",
+    });
+  }
   
 };
